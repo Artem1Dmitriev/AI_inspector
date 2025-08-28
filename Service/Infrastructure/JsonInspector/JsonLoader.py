@@ -1,12 +1,12 @@
-import os, json
+import os, sys, json
 
 class JsonLoader():
     def __init__(self):
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        self.folder = os.path.join(current_dir, '..', '..', 'Configs')
+        self.folder = os.getenv("CONFIGS_PATH", os.path.join(os.getcwd(), "Configs"))
 
         if not os.path.exists(self.folder):
             raise FileNotFoundError(f"Папка конфигов не найдена: {self.folder}")
+
 
     def load_all(self):
         configs = {}

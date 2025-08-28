@@ -1,7 +1,7 @@
 from openai import OpenAI
+from Entity.LLM_interface import ILanguageModelClient
 
-
-class ChatGPT_API():
+class ChatGPT_API(ILanguageModelClient):
     """
     Класс для взаимодействия с API OpenAI GPT.
 
@@ -22,31 +22,20 @@ class ChatGPT_API():
           OpenAI (openai): Клиент для выполнения запросов к API OpenAI GPT.
     """
 
-    def __init__(self, api_key):
+    def __init__(self, api_key: str):
         """
         Этот метод инициализирует ключ API из конфигурации и создает клиент OpenAI для отправки запросов.
 
         Args:
             self (API): Экземпляр самого класса API.
         """
-        self.api_key = api_key
-        self.client = OpenAI(api_key=self.api_key)
+        self.client = OpenAI(api_key=api_key)
 
-    def query_handler(self, model_name, input, instructions=None):
-        # Отправляем текущий запрос
+    def query(self, model_name: str, input_text: str, instructions: str | None = None) -> str:
         response = self.client.responses.create(
             model=model_name,
-            input=input,
+            input=input_text,
             instructions=instructions
         )
-
         return response.output_text
-
-
-
-# Тоже кладовщик, только работает не с базой, а с другим сервисом.
-# Например: твое приложение хочет получить погоду из внешнего API.
-# Сервис говорит клиенту: «дай погоду для Москвы».
-# Клиент идёт в чужой сервис и возвращает результат.
-
 

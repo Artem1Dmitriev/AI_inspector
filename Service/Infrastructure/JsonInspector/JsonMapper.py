@@ -1,4 +1,4 @@
-from .ConfigObject_type import ConfigObject
+from .ConfigObjectDTO import ConfigObject
 
 
 class JsonMapper:
