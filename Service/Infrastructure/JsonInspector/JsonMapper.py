@@ -1,4 +1,4 @@
-from .ConfigObjectDTO import ConfigObject
+from Entity.ConfigObjectDTO import ConfigObject
 
 
 class JsonMapper:

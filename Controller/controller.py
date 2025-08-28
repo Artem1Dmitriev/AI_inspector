@@ -1,6 +1,7 @@
 # controller.py
 from Service.Composition import Composition
 
+
 class Controller:
     def __init__(self):
         self.services = Composition()
