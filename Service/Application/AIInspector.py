@@ -1,9 +1,10 @@
 from Domain.Interface.LLM_interface import ILanguageModelClient
-
+from Domain.Interface.LLMProvider_interface import ILLMProvider
 
 class AiInspector():
-    def __init__(self, client: ILanguageModelClient):
+    def __init__(self, client: ILanguageModelClient, provider: ILLMProvider):
         self.client = client
+        self.provider = provider
 
     def simple_response(self, input: list[dict]) -> str:
         return self.client.query(input)
