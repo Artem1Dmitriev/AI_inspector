@@ -11,7 +11,3 @@ class Summarizer():
             total_tokens += len(encoding.encode(msg["role"]))
         if total_tokens > total_tokens_max:
             self.summarize()
-
-    def summarize(self, prompt: str, message: list[dict]) -> str:
-        summarize_message = self.ai.conf_response(message, prompt)
-        return summarize_message
