@@ -1,6 +1,6 @@
 from .JsonLoader import JsonLoader
 from .JsonMapper import JsonMapper
-from Entity.JSON_interface import IConfigProvider
+from Domain.Interface.JSON_interface import IConfigProvider
 
 
 class JsonConfigProvider(IConfigProvider):

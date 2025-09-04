@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class ConfigObject():
     def __init__(self, data: dict):
         for key, value in data.items():

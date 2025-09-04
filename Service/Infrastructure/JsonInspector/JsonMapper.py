@@ -1,7 +1,7 @@
-from Entity.ConfigObjectDTO import ConfigObject
+from Domain.DTO.ConfigObjectDTO import ConfigObject
 
 
-class JsonMapper:
+class JsonMapper():
     def __init__(self, configs):
         self.configs = {}
         for name, conf in configs.items():
