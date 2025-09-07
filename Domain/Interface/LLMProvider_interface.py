@@ -1,3 +1,4 @@
 from abc import ABC, abstractmethod
 class ILLMProvider(ABC):
-    pass
+    def __init__(self, summarizer_prompt: str):
+        pass

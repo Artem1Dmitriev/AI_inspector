@@ -8,12 +8,13 @@ from Domain.DTO.MessageAI import MessageAI
 
 class Composition():
     def __init__(self):
-        JsonProvider = IConfigProvider()
-        json_inspector = JsonInspector(JsonProvider)
+        json_provider = IConfigProvider()
+        json_inspector = JsonInspector(json_provider)
         api_key, model = json_inspector.get_chat_gpt_api()
+        summarizer_prompt = json_inspector.get_prompt("Summarizer")
 
-        LLMClient = ILanguageModelClient(api_key, model)
-        LLMProvider = ILLMProvider()
-        self.ai_inspector = AiInspector(LLMClient, LLMProvider)
+        llm_client = ILanguageModelClient(api_key, model)
+        llm_provider = ILLMProvider(summarizer_prompt)
+        self.ai_inspector = AiInspector(llm_client, llm_provider)
 
         self.message = MessageAI()
